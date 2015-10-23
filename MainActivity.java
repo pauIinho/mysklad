@@ -114,10 +114,9 @@ public class MainActivity extends ActionBarActivity {
 
         protected void onPostExecute(String result) {
             String pass = result.split("~")[0];
-            text.setText(pass);
-            if(pass == "unknown") {
-                text.setText("Ошибка авторизации");
-                Toast.makeText(getApplicationContext(), "Ошибка авторизации", Toast.LENGTH_LONG).show();
+            text.setText(result.substring(0,7));
+            if(result.substring(0,7).equals("unknown")) {
+                text.setText("Ошибка авторизации. Возможно, устройство не зарегистрировано в базе данных");
             }
             else {
                 //get current time
